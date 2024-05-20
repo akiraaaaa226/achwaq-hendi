@@ -435,6 +435,13 @@ form .btn.btn2{
   color: #C04CCA;
 }
 
+#msg{
+  color: yellow;
+  margin-top: -20px;
+  display: block;
+
+
+}
 /*-------------------------Small Screens-----------------*/
 
 

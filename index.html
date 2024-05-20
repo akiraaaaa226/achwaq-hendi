@@ -16,11 +16,11 @@
 <nav><img src="logo.png"  class="logo">
 
   <ul id="sidemenu">
-    <li><a href="#">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">My work</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#" onclick="closemenu()">Home</a></li>
+    <li><a href="#about" onclick="closemenu()">About</a></li>
+    <li><a href="#services" onclick="closemenu()">My work</a></li>
+    <li><a href="#portfolio" onclick="closemenu()">Portfolio</a></li>
+    <li><a href="#contact" onclick="closemenu()">Contact</a></li>
     <i class="fa-solid fa-circle-xmark" onclick="closemenu()"></i>
   </ul>
   <i class="fa-solid fa-bars" onclick="openmenu()"></i>
@@ -149,7 +149,7 @@
         <div class="layer">
         <h3>Web Design  </h3>
         <p>Collection of custom websites, portfolio templates, and e-commerce platforms. Each design is tailored to showcase unique identities and goals, whether it's a minimalist portfolio template or a dynamic online store.  </p>
-        <a href="#"><i class="fa-solid fa-link"></i></a>
+        <a href="https://www.figma.com/community/file/1374176914318484376"><i class="fa-solid fa-link"></i></a>
       </div>
       </div>
 
@@ -187,12 +187,13 @@
         <a href="Hendi-Achwaq.pdf" download class="btn btn2">Download CV</a>
       </div>
       <div class="contact-right">
-        <form action="email.php" method="post" >
+        <form name="submit-to-google-sheet">
           <input type="text" name="Name" placeholder="Your Name"  required>
-          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="Email" name="Email" placeholder="Your Email" required>
           <textarea name="Message"  rows="6" placeholder="Your Message"></textarea>
           <button type="submit" class="btn btn2">Submit</button>
         </form>
+        <span id="msg">  </span>
       </div>
     </div>
   </div>
@@ -239,6 +240,25 @@
 
 
 </script>
+
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbylNz99COJ-l9lO_HYQEBgutEgJFANcJTs1JCs1cBcogesvQpKg99nRulZRkj8WlFw1/exec'
+
+  const form = document.forms['submit-to-google-sheet']
+  const msg=document.getElementById("msg")
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response =>{ msg.innerHTML="Message sent successfully" 
+      setTimeout(function(){
+        msg.innerHTML=""
+      },5000) 
+      form.reset()}).catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+
 
 </body>
 </html>

@@ -412,6 +412,11 @@ form input,form textarea{
   margin: 15px 0;
   font-size:18px ;
   border-radius: 6px;
+  color:#fff;
+}
+
+form input::placeholder, form textarea::placeholder {
+    color: #ccc;  /* Placeholder text color */
 }
 
 form .btn.btn2{
